@@ -1,6 +1,9 @@
 body {
   font-family: "Public Sans", serif;
   position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
 header .first-strip {
@@ -90,16 +93,136 @@ header .navbar .support .number a {
   }
 }
 
+#toggle-form-container {
+  position: fixed;
+  top: 25%;
+  right: -305px;
+  width: 300px;
+  height: 450px;
+  background-color: #f4f4f4;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  padding: 20px 10px 20px 20px;
+  box-sizing: border-box;
+  z-index: 999;
+}
+#toggle-form-container.show {
+  right: 0;
+}
+#toggle-form-container #toggle-button {
+  position: absolute;
+  top: 50%;
+  left: -56px;
+  transform: translateY(-50%);
+  background-color: #A82E0F;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1000;
+  rotate: -90deg;
+}
+#toggle-form-container form {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 5px 0;
+  border-radius: 12px;
+}
+#toggle-form-container form .form-group {
+  position: relative;
+}
+#toggle-form-container form label {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  transform: translateY(40px);
+  transition: all 0.4s;
+  cursor: text;
+  z-index: -1;
+}
+#toggle-form-container form label.active {
+  transform: translateY(10px);
+  font-size: 10px;
+}
+#toggle-form-container form label.fontSwitch {
+  font-weight: 700;
+}
+#toggle-form-container form input, #toggle-form-container form select, #toggle-form-container form textarea {
+  position: relative;
+}
+#toggle-form-container form input:not([type=submit]), #toggle-form-container form select:not([type=submit]), #toggle-form-container form textarea:not([type=submit]) {
+  background: none;
+  outline: none;
+  border: none;
+  display: block;
+  padding: 10px 0;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  color: #444;
+  font-size: 15px;
+  z-index: 1;
+  transition: border-color 0.3s;
+}
+#toggle-form-container form input:not([type=submit]):focus, #toggle-form-container form select:not([type=submit]):focus, #toggle-form-container form textarea:not([type=submit]):focus {
+  border-bottom: 1px solid #A82E0F;
+}
+#toggle-form-container form .hasError {
+  border-color: #A82E0F;
+}
+#toggle-form-container form .hasError input {
+  border-bottom: 1px solid #A82E0F;
+}
+#toggle-form-container form span.error {
+  color: #A82E0F;
+  font-size: 12px;
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  display: none;
+}
+#toggle-form-container form span.error.show {
+  display: block;
+}
+#toggle-form-container form .CTA {
+  margin-top: 30px;
+  text-align: center;
+}
+#toggle-form-container form .CTA input[type=submit] {
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  background: #A82E0F;
+  color: #ffffff;
+  border-radius: 8px;
+  margin-right: 0;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#toggle-form-container form .CTA input[type=submit]:hover {
+  background: #79210b;
+}
+@media screen and (max-width: 767px) {
+  #toggle-form-container {
+    display: none;
+  }
+}
+
 .banner {
-  background: url(../images/banner.webp);
-  background-position: center;
-  background-size: cover;
-  padding: 60px 0;
+  background-color: #006546;
+  padding: 40px 0;
+}
+.banner .hero-title span {
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff;
 }
 .banner .hero-title h6 {
   font-size: 40px;
   font-weight: 700;
   color: #ffffff;
+  margin-top: 10px;
 }
 .banner .hero-title .rate {
   margin: 20px 0;
@@ -144,16 +267,19 @@ header .navbar .support .number a {
   background-color: white;
   color: #006546;
 }
-.banner .form {
+.banner .form-wrapper {
+  display: none;
+}
+.banner .form-wrapper .form {
   background-color: #ffffff;
   padding: 20px;
   margin: 5px 0;
   border-radius: 12px;
 }
-.banner .form .form-group {
+.banner .form-wrapper .form .form-group {
   position: relative;
 }
-.banner .form label {
+.banner .form-wrapper .form label {
   font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
@@ -162,17 +288,17 @@ header .navbar .support .number a {
   cursor: text;
   z-index: -1;
 }
-.banner .form label.active {
+.banner .form-wrapper .form label.active {
   transform: translateY(10px);
   font-size: 10px;
 }
-.banner .form label.fontSwitch {
+.banner .form-wrapper .form label.fontSwitch {
   font-weight: 700;
 }
-.banner .form input, .banner .form select, .banner .form textarea {
+.banner .form-wrapper .form input, .banner .form-wrapper .form select, .banner .form-wrapper .form textarea {
   position: relative;
 }
-.banner .form input:not([type=submit]), .banner .form select:not([type=submit]), .banner .form textarea:not([type=submit]) {
+.banner .form-wrapper .form input:not([type=submit]), .banner .form-wrapper .form select:not([type=submit]), .banner .form-wrapper .form textarea:not([type=submit]) {
   background: none;
   outline: none;
   border: none;
@@ -185,16 +311,16 @@ header .navbar .support .number a {
   z-index: 1;
   transition: border-color 0.3s;
 }
-.banner .form input:not([type=submit]):focus, .banner .form select:not([type=submit]):focus, .banner .form textarea:not([type=submit]):focus {
+.banner .form-wrapper .form input:not([type=submit]):focus, .banner .form-wrapper .form select:not([type=submit]):focus, .banner .form-wrapper .form textarea:not([type=submit]):focus {
   border-bottom: 1px solid #A82E0F;
 }
-.banner .form .hasError {
+.banner .form-wrapper .form .hasError {
   border-color: #A82E0F;
 }
-.banner .form .hasError input {
+.banner .form-wrapper .form .hasError input {
   border-bottom: 1px solid #A82E0F;
 }
-.banner .form span.error {
+.banner .form-wrapper .form span.error {
   color: #A82E0F;
   font-size: 12px;
   position: absolute;
@@ -202,14 +328,14 @@ header .navbar .support .number a {
   right: 0;
   display: none;
 }
-.banner .form span.error.show {
+.banner .form-wrapper .form span.error.show {
   display: block;
 }
-.banner .form .CTA {
+.banner .form-wrapper .form .CTA {
   margin-top: 30px;
   text-align: center;
 }
-.banner .form .CTA input[type=submit] {
+.banner .form-wrapper .form .CTA input[type=submit] {
   font-size: 12px;
   text-transform: uppercase;
   padding: 10px 30px;
@@ -221,12 +347,17 @@ header .navbar .support .number a {
   cursor: pointer;
   transition: background 0.3s;
 }
-.banner .form .CTA input[type=submit]:hover {
+.banner .form-wrapper .form .CTA input[type=submit]:hover {
   background: #79210b;
 }
 @media screen and (max-width: 768px) {
   .banner .form {
     margin-top: 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .banner .form-wrapper {
+    display: block;
   }
 }
 @media screen and (max-width: 400px) {
@@ -526,6 +657,11 @@ header .navbar .support .number a {
 .disease-section .disease-list-wrapper .disease-list p {
   margin-bottom: 0;
   color: #333333;
+}
+@media screen and (max-width: 768px) {
+  .disease-section .disease-list-wrapper .disease-list {
+    height: auto;
+  }
 }
 
 .faq {
