@@ -161,7 +161,7 @@ header{
 
     .hero-title{
         span{
-            font-size: 30px;
+            font-size: 20px;
             font-weight: $font-semibold;
             color: $white;
         }
@@ -233,6 +233,11 @@ header{
     @media screen and (max-width: 767px){
         .form-wrapper{
             display: block;
+        }
+        .hero-title{
+            h6{
+                font-size: 28px;
+            }
         }
     }
 

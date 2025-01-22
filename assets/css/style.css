@@ -214,7 +214,7 @@ header .navbar .support .number a {
   padding: 40px 0;
 }
 .banner .hero-title span {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 600;
   color: #ffffff;
 }
@@ -358,6 +358,9 @@ header .navbar .support .number a {
 @media screen and (max-width: 767px) {
   .banner .form-wrapper {
     display: block;
+  }
+  .banner .hero-title h6 {
+    font-size: 28px;
   }
 }
 @media screen and (max-width: 400px) {
